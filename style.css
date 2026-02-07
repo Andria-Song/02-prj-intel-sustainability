@@ -1,1 +1,146 @@
-/* Add your CSS here */
+/* Basic page setup */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	line-height: 1.5;
+	background: #f4f7fb;
+	color: #0f172a;
+}
+
+/* Hero section */
+header {
+	background: linear-gradient(135deg, #0a3d91, #49a4ff);
+	color: #ffffff;
+	padding: 48px 24px;
+}
+
+.hero {
+	max-width: 980px;
+	margin: 0 auto;
+  margin-bottom: 80px;
+	text-align: center;
+}
+
+.hero-logo {
+	width: 140px;
+	height: auto;
+	margin-bottom: 16px;
+}
+
+header h1 {
+	font-size: 2.2rem;
+	margin-bottom: 12px;
+}
+
+header p {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+/* Timeline layout */
+.timeline {
+	display: flex;
+	gap: 20px;
+	padding: 92px 24px 16px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+}
+
+/* Each card is a panel with a background image */
+.card {
+	min-width: 260px;
+	max-width: 260px;
+	background-size: cover;
+	background-position: center;
+	border-radius: 16px;
+	color: #ffffff;
+	padding: 18px;
+	position: relative;
+	scroll-snap-align: start;
+	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Dark overlay to improve text readability */
+.card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+	border-radius: 16px;
+	z-index: 0;
+}
+
+.card h2,
+.card h3,
+.card p {
+	position: relative;
+	z-index: 1;
+}
+
+.card h2 {
+	font-size: 1.6rem;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.card h3 {
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.card p {
+	font-size: 0.95rem;
+	text-align: center;
+	opacity: 0;
+	transform: translateY(8px);
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+}
+
+/* Reveal description on hover */
+.card:hover p {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Card background images */
+.card-1968 { background-image: url("img/1.jpg"); }
+.card-1971 { background-image: url("img/2.jpg"); }
+.card-1978 { background-image: url("img/3.jpg"); }
+.card-1985 { background-image: url("img/4.jpg"); }
+
+/* Reusing images for now so every card has a background */
+.card-2006 { background-image: url("img/1.jpg"); }
+.card-2020 { background-image: url("img/2.jpg"); }
+.card-2022 { background-image: url("img/3.jpg"); }
+.card-2023 { background-image: url("img/4.jpg"); }
+.card-2024 { background-image: url("img/1.jpg"); }
+
+.timeline-hint {
+	text-align: center;
+	padding: 16px 24px 32px;
+	color: #334155;
+}
+
+/* Small screen tweaks */
+@media (max-width: 600px) {
+	header h1 {
+		font-size: 1.8rem;
+	}
+
+	.card {
+		min-width: 220px;
+		max-width: 220px;
+	}
+}
