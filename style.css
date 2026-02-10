@@ -1,3 +1,5 @@
+@import url("https://fonts.google.com/specimen/Istok+Web?preview.text=Sustainability&specimen.preview.text=Sustainability&categoryFilters=Feeling:%2FExpressive%2FBusiness;Sans+Serif:%2FSans%2FRounded&sort=popularity&selection.family=Istok+Web:wght@400;700&display=swap");
+
 /* Basic page setup */
 * {
 	box-sizing: border-box;
@@ -6,17 +8,25 @@
 }
 
 body {
-	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-family: "Istok Web", Arial, sans-serif;
 	line-height: 1.5;
-	background: #f4f7fb;
+	background: #d6f1ff;
 	color: #0f172a;
 }
 
 /* Hero section */
 header {
-	background: linear-gradient(135deg, #0a3d91, #49a4ff);
+	/* Color overlay on top of the image */
+	background-image: linear-gradient(
+		rgba(0, 199, 253, 0.45),
+		rgba(0, 104, 181, 0.45)
+	),
+	url("img/louis-reed-EWZAHjBzdb8-unsplash.jpg");
+	background-size: stretch; /* Show the full image */
+	background-repeat: no-repeat; /* Do not tile the image */
+  background-position: center;
 	color: #ffffff;
-	padding: 48px 24px;
+	padding: 68px 24px;
 }
 
 .hero {
@@ -27,13 +37,13 @@ header {
 }
 
 .hero-logo {
-	width: 140px;
+	width: 100px;
 	height: auto;
 	margin-bottom: 16px;
 }
 
 header h1 {
-	font-size: 2.2rem;
+	font-size: 3rem;
 	margin-bottom: 12px;
 }
 
@@ -44,17 +54,37 @@ header p {
 
 /* Timeline layout */
 .timeline {
+	padding: 32px 24px 16px;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline-title {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  text-align: center;
+  color:	#0068B5;
+	order: 1;
+}
+
+/* Scrollable row of cards */
+.timeline-cards {
 	display: flex;
 	gap: 20px;
-	padding: 92px 24px 16px;
 	overflow-x: auto;
+	/* Prevent vertical scrolling in the card row */
+	overflow-y: hidden;
 	scroll-snap-type: x mandatory;
+	margin: 0 10% 0;
+	padding: 12px 0 20px;
+	order: 2;
 }
 
 /* Each card is a panel with a background image */
 .card {
-	min-width: 260px;
-	max-width: 260px;
+	min-width: 225px;
+	max-width: 225px;
+  height: 300px;
 	background-size: cover;
 	background-position: center;
 	border-radius: 16px;
@@ -62,7 +92,6 @@ header p {
 	padding: 18px;
 	position: relative;
 	scroll-snap-align: start;
-	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -84,19 +113,19 @@ header p {
 }
 
 .card h2 {
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 	margin-bottom: 4px;
 	text-align: center;
 }
 
 .card h3 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin-bottom: 10px;
 	text-align: center;
 }
 
 .card p {
-	font-size: 0.95rem;
+	font-size: 0.85rem;
 	text-align: center;
 	opacity: 0;
 	transform: translateY(8px);
@@ -105,7 +134,7 @@ header p {
 
 .card:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+	box-shadow: 0 14px 28px rgba(54, 109, 172, 0.6);
 }
 
 /* Reveal description on hover */
@@ -119,28 +148,57 @@ header p {
 .card-1971 { background-image: url("img/2.jpg"); }
 .card-1978 { background-image: url("img/3.jpg"); }
 .card-1985 { background-image: url("img/4.jpg"); }
-
-/* Reusing images for now so every card has a background */
-.card-2006 { background-image: url("img/1.jpg"); }
-.card-2020 { background-image: url("img/2.jpg"); }
-.card-2022 { background-image: url("img/3.jpg"); }
-.card-2023 { background-image: url("img/4.jpg"); }
-.card-2024 { background-image: url("img/1.jpg"); }
+.card-2006 { background-image: url("img/5.png"); }
+.card-2020 { background-image: url("img/6.png"); }
+.card-2022 { background-image: url("img/7.jpg"); }
+.card-2023 { background-image: url("img/8.jpg"); }
+.card-2024 { background-image: url("img/9.jpg"); }
 
 .timeline-hint {
 	text-align: center;
 	padding: 16px 24px 32px;
 	color: #334155;
+	order: 3;
 }
 
 /* Small screen tweaks */
 @media (max-width: 600px) {
 	header h1 {
 		font-size: 1.8rem;
+    line-height: 1;
+	}
+
+  header p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 5% 10% 2%;
+  }
+
+  .timeline-title {
+    font-size: 1.8rem;
+    line-height: 1;
+    padding-top: 10%;
+  }
+
+	/* Place the hint below the title on small screens */
+	.timeline-hint {
+		order: 2;
+		padding: 0 24px 20px;
+	}
+
+	/* Stack cards vertically on small screens */
+	.timeline-cards {
+		flex-direction: column;
+		overflow-x: hidden;
+		overflow-y: visible;
+		margin: 0 30px 0;
+		padding: 12px 0 20px;
+		order: 3;
 	}
 
 	.card {
-		min-width: 220px;
-		max-width: 220px;
+		min-width: 100%;
+		max-width: 100%;
+		height: auto;
 	}
 }
